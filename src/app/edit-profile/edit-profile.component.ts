@@ -18,7 +18,13 @@ export class EditProfileComponent implements OnInit {
         console.log(res);
         this._router.navigate(['/profile']);
       },
-      (err) => console.log(err)
+      (err) => {
+        if (err.error === 'Email already exists') {
+          alert('Email already exists');
+        } else {
+          console.error(err);
+        }
+      }
     );
   }
 }

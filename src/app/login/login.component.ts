@@ -23,7 +23,15 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', token.token);
         this._router.navigate(['/profile']);
       },
-      (err) => console.log(err)
+      (err) => {
+        if (err.error === 'Invalid email') {
+          alert('User not exists');
+        } else if (err.error === 'Invalid password') {
+          alert('Password Incorrect');
+        } else {
+          console.error(err);
+        }
+      }
     );
   }
 }

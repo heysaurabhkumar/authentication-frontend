@@ -19,7 +19,13 @@ export class RegisterComponent implements OnInit {
         localStorage.setItem('token', token.token);
         this._router.navigate(['/profile']);
       },
-      (err) => console.log(err)
+      (err) => {
+        if (err.error === 'Email already exists') {
+          alert('Email already exists');
+        } else {
+          console.error(err);
+        }
+      }
     );
   }
 }

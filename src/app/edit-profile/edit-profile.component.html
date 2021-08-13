@@ -8,7 +8,7 @@
                 <form #f="ngForm" (ngSubmit)="editUser(f.value)" class="form">
                     <div class="form-group">
                         <label for="emailInput">New Email</label>
-                        <input ngModel id="emailInput" name="email" #email="ngModel" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control rounded-0" required />
+                        <input ngModel id="emailInput" name="email" #email="ngModel" [value]="user.email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control rounded-0" required />
                         <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
                             <div *ngIf="email.errors?.required">Email is required.</div>
                             <div *ngIf="email.errors?.pattern">
@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group">
                         <label for="usernameInput">New Username</label>
-                        <input minlength="4" ngModel id="usernameInput" name="username" #username="ngModel" type="text" class="form-control rounded-0" required />
+                        <input minlength="4" ngModel id="usernameInput" name="username" [value]="user.username" #username="ngModel" type="text" class="form-control rounded-0" required />
                         <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
                             <div *ngIf="username.errors?.required">Username is required.</div>
                             <div *ngIf="username.errors?.minlength">

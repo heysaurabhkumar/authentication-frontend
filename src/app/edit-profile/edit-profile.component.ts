@@ -8,9 +8,21 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./edit-profile.component.css'],
 })
 export class EditProfileComponent implements OnInit {
+  user = {
+    email: '',
+    username: '',
+  };
   constructor(private _auth: AuthService, private _router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._auth.getProfile().subscribe(
+      (res) => {
+        this.user.email = JSON.parse(JSON.stringify(res)).email;
+        this.user.username = JSON.parse(JSON.stringify(res)).username;
+      },
+      (err) => console.error(err)
+    );
+  }
 
   editUser(editUserData: any) {
     this._auth.editUser(editUserData).subscribe(

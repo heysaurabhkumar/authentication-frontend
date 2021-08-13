@@ -8,11 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  loginUserData = {
-    email: '',
-    password: '',
-  };
-
   constructor(private _auth: AuthService, private _router: Router) {}
 
   ngOnInit(): void {
@@ -21,10 +16,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  loginUser() {
-    this._auth.loginUser(this.loginUserData).subscribe(
+  loginUser(loginUserData: any) {
+    this._auth.loginUser(loginUserData).subscribe(
       (res) => {
-        // console.log(res);
         let token = JSON.parse(JSON.stringify(res));
         localStorage.setItem('token', token.token);
         this._router.navigate(['/profile']);

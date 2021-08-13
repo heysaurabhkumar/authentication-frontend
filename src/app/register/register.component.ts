@@ -8,18 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  registerUserData = {
-    email: '',
-    username: '',
-    password: '',
-  };
-
   constructor(private _auth: AuthService, private _router: Router) {}
 
   ngOnInit(): void {}
 
-  registerUser() {
-    this._auth.registerUser(this.registerUserData).subscribe(
+  registerUser(registerUserData: any) {
+    // console.log(registerUserData);
+
+    this._auth.registerUser(registerUserData).subscribe(
       (res) => {
         // console.log(res);
         let token = JSON.parse(JSON.stringify(res));

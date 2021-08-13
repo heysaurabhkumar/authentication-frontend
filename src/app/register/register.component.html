@@ -5,22 +5,40 @@
                 <h3 class="mb-0">Register</h3>
             </div>
             <div class="card-body">
-                <form class="form">
+                <form #f="ngForm" (ngSubmit)="registerUser(f.value)" class="form">
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input [(ngModel)]="registerUserData.email" id="email" name="email" type="text" class="form-control rounded-0" required />
+                        <label for="emailInput">Email</label>
+                        <input required ngModel id="emailInput" name="email" #email="ngModel" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control rounded-0" />
+                        <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+                            <div *ngIf="email.errors?.required">Email is required.</div>
+                            <div *ngIf="email.errors?.pattern">
+                                This is not a valid Email!!!
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="username">Username</label>
-                        <input [(ngModel)]="registerUserData.username" id="username" name="username" type="text" class="form-control rounded-0" required />
+                        <label for="usernameInput">Username</label>
+                        <input required minlength="4" ngModel id="usernameInput" name="username" #username="ngModel" type="text" class="form-control rounded-0" />
+                        <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+                            <div *ngIf="username.errors?.required">Username is required.</div>
+                            <div *ngIf="username.errors?.minlength">
+                                Username should be at least {{ username.errors?.minlength?.requiredLength }} characters.
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input [(ngModel)]="registerUserData.password" id="password" name="password" type="password" class="form-control rounded-0" required />
+                        <label for="passwordInput">Password</label>
+                        <input required minlength="6" ngModel id="passwordInput" name="password" #password="ngModel" type="password" class="form-control rounded-0" />
+                        <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+                            <div *ngIf="password.errors?.required">Password is required.</div>
+                            <div *ngIf="password.errors?.minlength">
+                                Password should be at least {{ password.errors?.minlength?.requiredLength }} characters.
+                            </div>
+                        </div>
                     </div>
-                    <button (click)="registerUser()" type="button" class="btn btn-primary float-right">
-                        Register
-                    </button>
+                    <button class="btn btn-primary float-right" [disabled]="f.invalid">
+            Register
+          </button>
                 </form>
             </div>
         </div>

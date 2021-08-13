@@ -5,22 +5,40 @@
                 <h3 class="mb-0">Edit Profile</h3>
             </div>
             <div class="card-body">
-                <form class="form">
+                <form #f="ngForm" (ngSubmit)="editUser(f.value)" class="form">
                     <div class="form-group">
-                        <label for="">New Email</label>
-                        <input [(ngModel)]="editUserData.email" name="email" type="text" class="form-control rounded-0" required />
+                        <label for="emailInput">New Email</label>
+                        <input ngModel id="emailInput" name="email" #email="ngModel" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control rounded-0" required />
+                        <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+                            <div *ngIf="email.errors?.required">Email is required.</div>
+                            <div *ngIf="email.errors?.pattern">
+                                This is not a valid Email!!!
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="">New Username</label>
-                        <input [(ngModel)]="editUserData.username" name="username" type="text" class="form-control rounded-0" required />
+                        <label for="usernameInput">New Username</label>
+                        <input minlength="4" ngModel id="usernameInput" name="username" #username="ngModel" type="text" class="form-control rounded-0" required />
+                        <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+                            <div *ngIf="username.errors?.required">Username is required.</div>
+                            <div *ngIf="username.errors?.minlength">
+                                Username should be at least {{ username.errors?.minlength?.requiredLength }} characters.
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="">New Password</label>
-                        <input [(ngModel)]="editUserData.password" name="password" type="password" class="form-control rounded-0" required />
+                        <label for="passwordInput">New Password</label>
+                        <input minlength="6" ngModel id="passwordInput" name="password" type="password" #password="ngModel" class="form-control rounded-0" required />
+                        <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+                            <div *ngIf="password.errors?.required">Password is required.</div>
+                            <div *ngIf="password.errors?.minlength">
+                                Password should be at least {{ password.errors?.minlength?.requiredLength }} characters.
+                            </div>
+                        </div>
                     </div>
-                    <button (click)="editUser()" type="button" class="btn btn-primary float-right">
-                        Update Profile
-                    </button>
+                    <button [disabled]="f.invalid" class="btn btn-primary float-right">
+            Update Profile
+          </button>
                 </form>
             </div>
         </div>

@@ -13,11 +13,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   registerUser(registerUserData: any) {
-    // console.log(registerUserData);
-
     this._auth.registerUser(registerUserData).subscribe(
       (res) => {
-        // console.log(res);
         let token = JSON.parse(JSON.stringify(res));
         localStorage.setItem('token', token.token);
         this._router.navigate(['/profile']);

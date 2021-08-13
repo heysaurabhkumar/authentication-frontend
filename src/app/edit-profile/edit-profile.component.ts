@@ -8,17 +8,12 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./edit-profile.component.css'],
 })
 export class EditProfileComponent implements OnInit {
-  editUserData = {
-    email: '',
-    username: '',
-    password: '',
-  };
   constructor(private _auth: AuthService, private _router: Router) {}
 
   ngOnInit(): void {}
 
-  editUser() {
-    this._auth.editUser(this.editUserData).subscribe(
+  editUser(editUserData: any) {
+    this._auth.editUser(editUserData).subscribe(
       (res) => {
         console.log(res);
         this._router.navigate(['/profile']);

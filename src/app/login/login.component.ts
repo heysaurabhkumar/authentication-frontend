@@ -15,7 +15,11 @@ export class LoginComponent implements OnInit {
 
   constructor(private _auth: AuthService, private _router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this._auth.loggedIn()) {
+      this._router.navigate(['/profile']);
+    }
+  }
 
   loginUser() {
     this._auth.loginUser(this.loginUserData).subscribe(

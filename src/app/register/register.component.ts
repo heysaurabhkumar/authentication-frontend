@@ -10,7 +10,12 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   constructor(private _auth: AuthService, private _router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this._auth.loggedIn()) {
+      this._auth.logoutUser();
+      this._router.navigate(['/register']);
+    }
+  }
 
   registerUser(registerUserData: any) {
     this._auth.registerUser(registerUserData).subscribe(

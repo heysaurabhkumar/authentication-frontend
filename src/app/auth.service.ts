@@ -6,10 +6,19 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
+  //For development
+
   private _registerUrl = 'http://localhost:3000/api/register';
   private _loginUrl = 'http://localhost:3000/api/login';
   private _profileUrl = 'http://localhost:3000/api/profile';
   private _editUrl = 'http://localhost:3000/api/edit';
+
+  //For production
+
+  // private _registerUrl = 'api/register';
+  // private _loginUrl = 'api/login';
+  // private _profileUrl = 'api/profile';
+  // private _editUrl = 'api/edit';
 
   constructor(private http: HttpClient, private _router: Router) {}
 

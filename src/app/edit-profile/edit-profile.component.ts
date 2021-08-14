@@ -27,7 +27,6 @@ export class EditProfileComponent implements OnInit {
   editUser(editUserData: any) {
     this._auth.editUser(editUserData).subscribe(
       (res) => {
-        console.log(res);
         this._router.navigate(['/profile']);
       },
       (err) => {

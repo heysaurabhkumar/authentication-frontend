@@ -1,3 +1,4 @@
+import { ResumeService } from './resume.service';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { AuthService } from './auth.service';
 import { NgModule } from '@angular/core';
@@ -10,9 +11,11 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './auth.guard';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ResumeFormComponent } from './resume-form/resume-form.component';
+import { ResumeTemplateComponent } from './resume-template/resume-template.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +25,16 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     HomeComponent,
     ProfileComponent,
     EditProfileComponent,
+    ResumeFormComponent,
+    ResumeTemplateComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+  ],
   providers: [
     AuthService,
     AuthGuard,
@@ -32,6 +43,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
       useClass: TokenInterceptorService,
       multi: true,
     },
+    ResumeService,
   ],
   bootstrap: [AppComponent],
 })

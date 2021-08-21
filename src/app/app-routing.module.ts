@@ -1,3 +1,5 @@
+import { ResumeTemplateComponent } from './resume-template/resume-template.component';
+import { ResumeFormComponent } from './resume-form/resume-form.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -14,6 +16,12 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'edit', component: EditProfileComponent, canActivate: [AuthGuard] },
+  { path: 'resume', component: ResumeFormComponent, canActivate: [AuthGuard] },
+  {
+    path: 'template',
+    component: ResumeTemplateComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

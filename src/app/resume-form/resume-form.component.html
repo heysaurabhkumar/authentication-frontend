@@ -1,0 +1,95 @@
+<div class="container text-center">
+    <h1>Resume Builder</h1>
+</div>
+<form [formGroup]="resumeForm" (ngSubmit)="generateResume()">
+    <div class="row">
+        <div class="col-md-6 mt-2">
+            <div class="form-group mt-3">
+                <label for="fullNameInput">Full Name</label>
+                <input type="text" formControlName="fullname" id="fullNameInput" class="form-control" placeholder="Enter full name" />
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="positionInput">Current Position</label>
+                <input type="text" formControlName="position" id="positionInput" class="form-control" placeholder="Enter current position" />
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="emailInput">Email</label>
+                <input type="email" formControlName="email" id="emailInput" class="form-control" placeholder="Enter email" />
+            </div>
+            <div class="form-group mt-2">
+                <label for="mobileInput">Mobile No</label>
+                <input type="text" formControlName="mobile" id="mobileInput" class="form-control" placeholder="Enter mobile number" />
+            </div>
+            <div class="form-group mt-2">
+                <label for="addressInput">Address</label>
+                <textarea id="addressInput" formControlName="address" rows="3" class="form-control" placeholder="Enter address"></textarea>
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="skillsInput">Skills</label>
+                <textarea id="skillsInput" formControlName="skills" rows="3" class="form-control" placeholder="Write your skills comma seperated"></textarea>
+            </div>
+            <!-- <div class="form-group mt-2">
+                <label for="profileInput">Select your profile image</label>
+                <input type="file" id="profileInput" class="form-control" />
+            </div> -->
+            <p class="text-secondary mt-3">Social Links</p>
+            <div class="form-group mt-2">
+                <label for="linkedInput">LinkedIn</label>
+                <input type="text" formControlName="linkedin" id="linkedInput" class="form-control" placeholder="Enter linkedin profile url" />
+            </div>
+            <div class="form-group mt-2">
+                <label for="facebookInput">Facebook</label>
+                <input type="text" formControlName="facebook" id="facebookInput" class="form-control" placeholder="Enter facebook profile url" />
+            </div>
+            <div class="form-group mt-2">
+                <label for="instagramInput">Instagram</label>
+                <input type="text" formControlName="instagram" id="instagramInput" class="form-control" placeholder="Enter instagram profile url" />
+            </div>
+            <div class="form-group mt-2">
+                <label for="languageInput">Languages Speak</label>
+                <textarea id="languageInput" formControlName="languages" rows="3" class="form-control" placeholder="Write your languages comma seperated"></textarea>
+            </div>
+        </div>
+        <div class="col-md-6 mt-2">
+            <div class="form-group mt-3">
+                <label for="objectiveInput">Objective</label>
+                <textarea id="objectiveInput" formControlName="objective" rows="4" class="form-control" placeholder="Write your objective"></textarea>
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="experienceInput">Experience</label>
+                <textarea id="experienceInput" formControlName="experience" rows="5" class="form-control" placeholder="Write your experiences seperated by vertical bar '|'"></textarea>
+                <!-- <div class="container text-center">
+                    <button class="btn btn-dark btn-sm">Add</button>
+                </div> -->
+            </div>
+            <div class="form-group mt-2">
+                <label for="projectInput">Projects</label>
+                <textarea id="projectInput" formControlName="project" rows="5" class="form-control" placeholder="Write your projects seperated by vertical bar"></textarea>
+                <!-- <div class="container text-center">
+                    <button class="btn btn-dark btn-sm">Add</button>
+                </div> -->
+            </div>
+            <div class="form-group mt-2">
+                <label for="certificateInput">Certifications</label>
+                <textarea id="certificateInput" formControlName="certification" rows="5" class="form-control" placeholder="Write your certifications seperated by vertical bar"></textarea>
+                <!-- <div class="container text-center">
+                    <button class="btn btn-dark btn-sm">Add</button>
+                </div> -->
+            </div>
+            <div class="form-group mt-2">
+                <label for="educationInput">Education</label>
+                <textarea id="educationInput" formControlName="education" rows="5" class="form-control" placeholder="Write your edcation seperated by vertical bar"></textarea>
+                <!-- <div class="container text-center">
+                    <button class="btn btn-dark btn-sm">Add</button>
+                </div> -->
+            </div>
+        </div>
+        <div class="container text-center m-2">
+            <button type="submit" class="btn btn-dark btn-lg">Generate Resume</button>
+        </div>
+    </div>
+</form>

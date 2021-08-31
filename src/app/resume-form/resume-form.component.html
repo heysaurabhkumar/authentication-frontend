@@ -1,4 +1,4 @@
-<div class="container text-center">
+<div class="container text-center mt-2">
     <h1>Resume Builder</h1>
 </div>
 <form [formGroup]="resumeForm" (ngSubmit)="generateResume()">
@@ -29,7 +29,7 @@
 
             <div class="form-group mt-2">
                 <label for="skillsInput">Skills</label>
-                <textarea id="skillsInput" formControlName="skills" rows="3" class="form-control" placeholder="Write your skills comma seperated"></textarea>
+                <textarea id="skillsInput" formControlName="skills" rows="2" class="form-control" placeholder="Write your skills comma seperated"></textarea>
             </div>
             <div class="form-group mt-2">
                 <label for="profileInput">Enter your picture url</label>
@@ -50,46 +50,66 @@
             </div>
             <div class="form-group mt-2">
                 <label for="languageInput">Languages Speak</label>
-                <textarea id="languageInput" formControlName="languages" rows="3" class="form-control" placeholder="Write your languages comma seperated"></textarea>
-            </div>
-        </div>
-        <div class="col-md-6 mt-2">
-            <div class="form-group mt-3">
-                <label for="objectiveInput">Objective</label>
-                <textarea id="objectiveInput" formControlName="objective" rows="4" class="form-control" placeholder="Write your objective"></textarea>
+                <textarea id="languageInput" formControlName="languages" rows="1" class="form-control" placeholder="Write your languages comma seperated"></textarea>
             </div>
 
             <div class="form-group mt-2">
+                <label for="objectiveInput">Objective</label>
+                <textarea id="objectiveInput" formControlName="objective" rows="4" class="form-control" placeholder="Write your objective"></textarea>
+            </div>
+        </div>
+        <div class="col-md-6 mt-2">
+            <div class="form-group mt-3" formArrayName="experience">
                 <label for="experienceInput">Experience</label>
-                <textarea id="experienceInput" formControlName="experience" rows="5" class="form-control" placeholder="Write your experiences seperated by vertical bar '|'"></textarea>
-                <!-- <div class="container text-center">
-                    <button class="btn btn-dark btn-sm">Add</button>
-                </div> -->
+                <ng-container *ngFor="let pro of experienceControls; let i = index">
+                    <textarea [formControlName]="i" rows="2" class="form-control mt-2" placeholder="Write your experience"></textarea>
+                </ng-container>
+                <div class="container text-center">
+                    <button type="button" (click)="onAddExperience()" class="btn btn-success btn-sm">
+            Add Experience
+          </button>
+                </div>
             </div>
-            <div class="form-group mt-2">
+            <div class="form-group mt-2" formArrayName="project">
                 <label for="projectInput">Projects</label>
-                <textarea id="projectInput" formControlName="project" rows="5" class="form-control" placeholder="Write your projects seperated by vertical bar"></textarea>
-                <!-- <div class="container text-center">
-                    <button class="btn btn-dark btn-sm">Add</button>
-                </div> -->
+                <ng-container *ngFor="let pro of projectControls; let i = index">
+                    <textarea [formControlName]="i" rows="3" class="form-control mt-2" placeholder="Write your project"></textarea>
+                </ng-container>
+                <div class="container text-center">
+                    <button type="button" (click)="onAddProject()" class="btn btn-success btn-sm">
+            Add Project
+          </button>
+                </div>
             </div>
-            <div class="form-group mt-2">
+            <div class="form-group mt-2" formArrayName="certification">
                 <label for="certificateInput">Certifications</label>
-                <textarea id="certificateInput" formControlName="certification" rows="5" class="form-control" placeholder="Write your certifications seperated by vertical bar"></textarea>
-                <!-- <div class="container text-center">
-                    <button class="btn btn-dark btn-sm">Add</button>
-                </div> -->
+                <ng-container *ngFor="let cer of certificationControls; let i = index">
+                    <textarea [formControlName]="i" rows="2" class="form-control mt-2" placeholder="Write your certification"></textarea>
+                </ng-container>
+
+                <div class="container text-center">
+                    <button type="button" (click)="onAddCertifiction()" class="btn btn-success btn-sm">
+            Add Certification
+          </button>
+                </div>
             </div>
-            <div class="form-group mt-2">
-                <label for="educationInput">Education</label>
-                <textarea id="educationInput" formControlName="education" rows="5" class="form-control" placeholder="Write your edcation seperated by vertical bar"></textarea>
-                <!-- <div class="container text-center">
-                    <button class="btn btn-dark btn-sm">Add</button>
-                </div> -->
+            <div class="form-group mt-2" formArrayName="education">
+                <label for="educationInput">Educations</label>
+                <ng-container *ngFor="let edu of educationControls; let i = index">
+                    <textarea rows="3" [formControlName]="i" class="form-control mt-2" placeholder="Write your edcation"></textarea>
+                </ng-container>
+
+                <div class="container text-center">
+                    <button type="button" (click)="onAddEducation()" class="btn btn-success btn-sm">
+            Add Education
+          </button>
+                </div>
             </div>
         </div>
         <div class="container text-center m-2">
-            <button type="submit" class="btn btn-dark btn-lg">Generate Resume</button>
+            <button type="submit" class="btn btn-primary btn-lg">
+        Generate Resume
+      </button>
         </div>
     </div>
 </form>

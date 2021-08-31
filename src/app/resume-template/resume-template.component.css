@@ -10,3 +10,7 @@
     border-radius: 50%;
     width: 200px;
 }
+
+.new-line {
+    white-space: pre-line;
+}

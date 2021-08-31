@@ -1,4 +1,4 @@
-<div id="resume" class="container body my-5">
+<div id="resume" class="container body mt-3">
     <div class="row">
         <div class="col-md-3 py-5 background">
             <div class="text-center">
@@ -8,7 +8,7 @@
             </div>
             <p class="text-break"><strong>Email:</strong> {{ resumeData.email }}</p>
             <p><strong>Contact No.:</strong> {{ resumeData.mobile }}</p>
-            <p><strong>Address:</strong> {{ resumeData.address }}</p>
+            <p class="new-line"><strong>Address:</strong> {{ resumeData.address }}</p>
 
             <hr />
             <h4>Skills</h4>
@@ -49,9 +49,8 @@
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li *ngFor="let exp of resumeData.experience">
-                            {{ exp }} <br />
-                            <br />
+                        <li class="new-line" *ngFor="let exp of resumeData.experience">
+                            {{ exp }}
                         </li>
                     </ul>
                 </div>
@@ -63,9 +62,8 @@
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li *ngFor="let pro of resumeData.project">
-                            {{ pro }} <br />
-                            <br />
+                        <li class="new-line" *ngFor="let pro of resumeData.project">
+                            {{ pro }}
                         </li>
                     </ul>
                 </div>
@@ -77,9 +75,8 @@
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li *ngFor="let cer of resumeData.certification">
-                            {{ cer }} <br />
-                            <br />
+                        <li class="new-line" *ngFor="let cer of resumeData.certification">
+                            {{ cer }}
                         </li>
                     </ul>
                 </div>
@@ -91,9 +88,8 @@
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li *ngFor="let edu of resumeData.education">
-                            {{ edu }} <br />
-                            <br />
+                        <li class="new-line" *ngFor="let edu of resumeData.education">
+                            {{ edu }}
                         </li>
                     </ul>
                 </div>
@@ -102,6 +98,6 @@
     </div>
 </div>
 
-<div class="container text-center mb-2">
+<div class="container text-center mb-3">
     <button (click)="download()" class="btn btn-primary btn-lg">Download</button>
 </div>

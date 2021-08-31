@@ -17,7 +17,7 @@ export class ResumeTemplateComponent implements OnInit {
       (res) => {
         // console.log('hello');
 
-        // console.log(res);
+        console.log(res);
         this.resumeData = res;
         this.resumeData.skills = this.resumeData.skills.split(',');
         this.resumeData.languages = this.resumeData.languages.split(',');

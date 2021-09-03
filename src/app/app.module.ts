@@ -16,6 +16,11 @@ import { AuthGuard } from './auth.guard';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ResumeFormComponent } from './resume-form/resume-form.component';
 import { ResumeTemplateComponent } from './resume-template/resume-template.component';
+import {
+  GoogleLoginProvider,
+  SocialAuthServiceConfig,
+  SocialLoginModule,
+} from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -34,6 +39,7 @@ import { ResumeTemplateComponent } from './resume-template/resume-template.compo
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    SocialLoginModule,
   ],
   providers: [
     AuthService,
@@ -42,6 +48,20 @@ import { ResumeTemplateComponent } from './resume-template/resume-template.compo
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true,
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '823617306530-0b264uv74c5jm32i3lmr9ipmii3hah72.apps.googleusercontent.com'
+            ),
+          },
+        ],
+      } as SocialAuthServiceConfig,
     },
     ResumeService,
   ],

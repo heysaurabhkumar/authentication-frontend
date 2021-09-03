@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-profile',
@@ -8,24 +9,33 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./edit-profile.component.css'],
 })
 export class EditProfileComponent implements OnInit {
-  user = {
-    email: '',
-    username: '',
-  };
+  user = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    username: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4),
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
+  });
   constructor(private _auth: AuthService, private _router: Router) {}
 
   ngOnInit(): void {
     this._auth.getProfile().subscribe(
       (res) => {
-        this.user.email = JSON.parse(JSON.stringify(res)).email;
-        this.user.username = JSON.parse(JSON.stringify(res)).username;
+        this.user.patchValue({
+          email: JSON.parse(JSON.stringify(res)).email,
+          username: JSON.parse(JSON.stringify(res)).username,
+        });
       },
       (err) => console.error(err)
     );
   }
 
-  editUser(editUserData: any) {
-    this._auth.editUser(editUserData).subscribe(
+  editUser() {
+    this._auth.editUser(this.user.value).subscribe(
       (res) => {
         this._router.navigate(['/profile']);
       },

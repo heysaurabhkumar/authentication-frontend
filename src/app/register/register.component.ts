@@ -1,4 +1,8 @@
-import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthService,
+} from 'angularx-social-login';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -31,9 +35,22 @@ export class RegisterComponent implements OnInit {
     this.signup(registerUserData);
   }
 
-  loginWithGoogle() {
+  signupWithGoogle() {
     this._socialAuthService
       .signIn(GoogleLoginProvider.PROVIDER_ID)
+      .then((data) => {
+        this.socialData.email = data.email;
+        this.socialData.username = data.name;
+        this.socialData.password = data.id;
+      })
+      .then(() => {
+        this.signup(this.socialData);
+      });
+  }
+
+  signupWithFacebook() {
+    this._socialAuthService
+      .signIn(FacebookLoginProvider.PROVIDER_ID)
       .then((data) => {
         this.socialData.email = data.email;
         this.socialData.username = data.name;

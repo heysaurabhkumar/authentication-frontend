@@ -44,8 +44,14 @@
         </div>
     </div>
     <div class="col-md-6 mx-auto">
-        <button class="google btn1" type="button" (click)="loginWithGoogle()">
+        <div class="hide-md-lg">
+            <p>Or</p>
+        </div>
+        <button class="google btn1" type="button" (click)="signupWithGoogle()">
       Signup with Google
+    </button>
+        <button class="facebook btn1" type="button" (click)="signupWithFacebook()">
+      Signup with Facebook
     </button>
     </div>
 </div>

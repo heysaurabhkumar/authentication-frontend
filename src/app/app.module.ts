@@ -17,6 +17,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ResumeFormComponent } from './resume-form/resume-form.component';
 import { ResumeTemplateComponent } from './resume-template/resume-template.component';
 import {
+  FacebookLoginProvider,
   GoogleLoginProvider,
   SocialAuthServiceConfig,
   SocialLoginModule,
@@ -59,6 +60,10 @@ import {
             provider: new GoogleLoginProvider(
               '823617306530-0b264uv74c5jm32i3lmr9ipmii3hah72.apps.googleusercontent.com'
             ),
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('1011827212925700'),
           },
         ],
       } as SocialAuthServiceConfig,

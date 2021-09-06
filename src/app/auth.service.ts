@@ -1,3 +1,4 @@
+import { SocialAuthService } from 'angularx-social-login';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -20,7 +21,11 @@ export class AuthService {
   // private _profileUrl = 'api/profile';
   // private _editUrl = 'api/edit';
 
-  constructor(private http: HttpClient, private _router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private _router: Router,
+    private _socialAuthService: SocialAuthService
+  ) {}
 
   registerUser(user: any) {
     return this.http.post(this._registerUrl, user);
@@ -40,6 +45,7 @@ export class AuthService {
 
   logoutUser() {
     localStorage.removeItem('token');
+    this._socialAuthService.signOut();
     this._router.navigate(['/home']);
   }
 

@@ -13,10 +13,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  socialData = {
+  userData = {
     email: '',
     username: '',
     password: '',
+    isSocial: false,
   };
   constructor(
     private _auth: AuthService,
@@ -32,19 +33,23 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(registerUserData: any) {
-    this.signup(registerUserData);
+    this.userData.email = registerUserData.email;
+    this.userData.username = registerUserData.username;
+    this.userData.password = registerUserData.password;
+    this.signup(this.userData);
   }
 
   signupWithGoogle() {
     this._socialAuthService
       .signIn(GoogleLoginProvider.PROVIDER_ID)
       .then((data) => {
-        this.socialData.email = data.email;
-        this.socialData.username = data.name;
-        this.socialData.password = data.id;
+        this.userData.email = data.email;
+        this.userData.username = data.name;
+        this.userData.password = data.id;
+        this.userData.isSocial = true;
       })
       .then(() => {
-        this.signup(this.socialData);
+        this.signup(this.userData);
       });
   }
 
@@ -52,12 +57,13 @@ export class RegisterComponent implements OnInit {
     this._socialAuthService
       .signIn(FacebookLoginProvider.PROVIDER_ID)
       .then((data) => {
-        this.socialData.email = data.email;
-        this.socialData.username = data.name;
-        this.socialData.password = data.id;
+        this.userData.email = data.email;
+        this.userData.username = data.name;
+        this.userData.password = data.id;
+        this.userData.isSocial = true;
       })
       .then(() => {
-        this.signup(this.socialData);
+        this.signup(this.userData);
       });
   }
 

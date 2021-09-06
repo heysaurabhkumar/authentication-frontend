@@ -33,30 +33,30 @@ export class ResumeTemplateComponent implements OnInit {
   download() {
     const resume: any = document.querySelector('#resume');
     html2canvas(resume, { allowTaint: true, useCORS: true }).then((canvas) => {
-      const img = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const width = pdf.internal.pageSize.getWidth();
-      const height = pdf.internal.pageSize.getHeight();
-      pdf.addImage(img, 'JPEG', 0, 0, width, height);
-      pdf.save('Resume.pdf');
+      // const img = canvas.toDataURL('image/png');
+      // const pdf = new jsPDF('p', 'mm', 'a4');
+      // const width = pdf.internal.pageSize.getWidth();
+      // const height = pdf.internal.pageSize.getHeight();
+      // pdf.addImage(img, 'JPEG', 0, 0, width, height);
+      // pdf.save('Resume.pdf');
 
-      // const image = canvas.toDataURL('image/jpeg', 1.0);
-      // const doc = new jsPDF('p', 'px', 'a4');
-      // const pageWidth = doc.internal.pageSize.getWidth();
-      // const pageHeight = doc.internal.pageSize.getHeight();
+      const image = canvas.toDataURL('image/jpeg', 1.0);
+      const doc = new jsPDF('p', 'px', 'a4');
+      const pageWidth = doc.internal.pageSize.getWidth();
+      const pageHeight = doc.internal.pageSize.getHeight();
 
-      // const widthRatio = pageWidth / canvas.width;
-      // const heightRatio = pageHeight / canvas.height;
-      // const ratio = widthRatio > heightRatio ? heightRatio : widthRatio;
+      const widthRatio = pageWidth / canvas.width;
+      const heightRatio = pageHeight / canvas.height;
+      const ratio = widthRatio > heightRatio ? heightRatio : widthRatio;
 
-      // const canvasWidth = canvas.width * ratio;
-      // const canvasHeight = canvas.height * ratio;
+      const canvasWidth = canvas.width * ratio;
+      const canvasHeight = canvas.height * ratio;
 
-      // const marginX = (pageWidth - canvasWidth) / 2;
-      // const marginY = (pageHeight - canvasHeight) / 2;
+      const marginX = (pageWidth - canvasWidth) / 2;
+      const marginY = (pageHeight - canvasHeight) / 2;
 
-      // doc.addImage(image, 'JPEG', marginX, marginY, canvasWidth, canvasHeight);
-      // doc.save('Resume.pdf');
+      doc.addImage(image, 'JPEG', marginX, marginY, canvasWidth, canvasHeight);
+      doc.save('Resume.pdf');
     });
   }
 }

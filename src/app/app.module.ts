@@ -22,6 +22,7 @@ import {
   SocialAuthServiceConfig,
   SocialLoginModule,
 } from 'angularx-social-login';
+import { ResumeTemplateOneComponent } from './resume-template-one/resume-template-one.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {
     EditProfileComponent,
     ResumeFormComponent,
     ResumeTemplateComponent,
+    ResumeTemplateOneComponent,
   ],
   imports: [
     BrowserModule,

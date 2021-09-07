@@ -4,11 +4,11 @@ import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 
 @Component({
-  selector: 'app-resume-template',
-  templateUrl: './resume-template.component.html',
-  styleUrls: ['./resume-template.component.css'],
+  selector: 'app-resume-template-one',
+  templateUrl: './resume-template-one.component.html',
+  styleUrls: ['./resume-template-one.component.css'],
 })
-export class ResumeTemplateComponent implements OnInit {
+export class ResumeTemplateOneComponent implements OnInit {
   resumeData: any;
   constructor(private _resumeService: ResumeService) {}
 

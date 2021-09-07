@@ -23,6 +23,7 @@ import {
   SocialLoginModule,
 } from 'angularx-social-login';
 import { ResumeTemplateOneComponent } from './resume-template-one/resume-template-one.component';
+import { ViewAllTemplatesComponent } from './view-all-templates/view-all-templates.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ResumeTemplateOneComponent } from './resume-template-one/resume-templat
     ResumeFormComponent,
     ResumeTemplateComponent,
     ResumeTemplateOneComponent,
+    ViewAllTemplatesComponent,
   ],
   imports: [
     BrowserModule,

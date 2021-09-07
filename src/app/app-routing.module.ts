@@ -1,3 +1,4 @@
+import { ViewAllTemplatesComponent } from './view-all-templates/view-all-templates.component';
 import { ResumeTemplateComponent } from './resume-template/resume-template.component';
 import { ResumeFormComponent } from './resume-form/resume-form.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
@@ -20,7 +21,17 @@ const routes: Routes = [
   { path: 'resume', component: ResumeFormComponent, canActivate: [AuthGuard] },
   {
     path: 'template',
+    component: ViewAllTemplatesComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'template-one',
     component: ResumeTemplateComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'template-two',
+    component: ResumeTemplateOneComponent,
     canActivate: [AuthGuard],
   },
 ];

@@ -112,6 +112,30 @@ export class ResumeFormComponent implements OnInit {
     (<FormArray>this.resumeForm.get('education')).push(control);
   }
 
+  onRemoveExperience() {
+    (<FormArray>this.resumeForm.get('experience')).removeAt(
+      this.experienceControls.length - 1
+    );
+  }
+
+  onRemoveProject() {
+    (<FormArray>this.resumeForm.get('project')).removeAt(
+      this.projectControls.length - 1
+    );
+  }
+
+  onRemoveCertification() {
+    (<FormArray>this.resumeForm.get('certification')).removeAt(
+      this.certificationControls.length - 1
+    );
+  }
+
+  onRemoveEducation() {
+    (<FormArray>this.resumeForm.get('education')).removeAt(
+      this.educationControls.length - 1
+    );
+  }
+
   generateResume() {
     // console.log(this.resumeForm.value);
     this._resumeService.setResumeData(this.resumeForm.value).subscribe(

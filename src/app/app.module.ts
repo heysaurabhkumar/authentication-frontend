@@ -24,6 +24,8 @@ import {
 } from 'angularx-social-login';
 import { ResumeTemplateOneComponent } from './resume-template-one/resume-template-one.component';
 import { ViewAllTemplatesComponent } from './view-all-templates/view-all-templates.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { ViewAllTemplatesComponent } from './view-all-templates/view-all-templat
     ResumeTemplateComponent,
     ResumeTemplateOneComponent,
     ViewAllTemplatesComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,

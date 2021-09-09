@@ -13,6 +13,8 @@ export class AuthService {
   private _loginUrl = 'http://localhost:3000/api/login';
   private _profileUrl = 'http://localhost:3000/api/profile';
   private _editUrl = 'http://localhost:3000/api/edit';
+  private _forgotPassword = 'http://localhost:3000/api/forgot-password';
+  private _resetPassword = 'http://localhost:3000/api/reset-password';
 
   //For production
 
@@ -20,6 +22,8 @@ export class AuthService {
   // private _loginUrl = 'api/login';
   // private _profileUrl = 'api/profile';
   // private _editUrl = 'api/edit';
+  // private _forgotPassword = 'api/forgot-password';
+  // private _resetPassword = 'api/reset-password';
 
   constructor(
     private http: HttpClient,
@@ -55,5 +59,13 @@ export class AuthService {
 
   getProfile() {
     return this.http.get(this._profileUrl);
+  }
+
+  forgotPassword(email: any) {
+    return this.http.post(this._forgotPassword, email);
+  }
+
+  resetPassword(data: any) {
+    return this.http.post(this._resetPassword, data);
   }
 }

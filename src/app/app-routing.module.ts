@@ -1,3 +1,5 @@
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ViewAllTemplatesComponent } from './view-all-templates/view-all-templates.component';
 import { ResumeTemplateComponent } from './resume-template/resume-template.component';
 import { ResumeFormComponent } from './resume-form/resume-form.component';
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset-password/:id/:token', component: ResetPasswordComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'edit', component: EditProfileComponent, canActivate: [AuthGuard] },
   { path: 'resume', component: ResumeFormComponent, canActivate: [AuthGuard] },

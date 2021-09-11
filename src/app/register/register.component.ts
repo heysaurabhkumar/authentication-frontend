@@ -13,17 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  userData = {
-    email: '',
-    username: '',
-    password: '',
-    isSocial: false,
-  };
-  constructor(
-    private _auth: AuthService,
-    private _router: Router,
-    private _socialAuthService: SocialAuthService
-  ) {}
+  constructor(private _auth: AuthService, private _router: Router) {}
 
   ngOnInit(): void {
     if (this._auth.loggedIn()) {
@@ -33,42 +23,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(registerUserData: any) {
-    this.userData.email = registerUserData.email;
-    this.userData.username = registerUserData.username;
-    this.userData.password = registerUserData.password;
-    this.signup(this.userData);
-  }
-
-  signupWithGoogle() {
-    this._socialAuthService
-      .signIn(GoogleLoginProvider.PROVIDER_ID)
-      .then((data) => {
-        this.userData.email = data.email;
-        this.userData.username = data.name;
-        this.userData.password = data.id;
-        this.userData.isSocial = true;
-      })
-      .then(() => {
-        this.signup(this.userData);
-      });
-  }
-
-  signupWithFacebook() {
-    this._socialAuthService
-      .signIn(FacebookLoginProvider.PROVIDER_ID)
-      .then((data) => {
-        this.userData.email = data.email;
-        this.userData.username = data.name;
-        this.userData.password = data.id;
-        this.userData.isSocial = true;
-      })
-      .then(() => {
-        this.signup(this.userData);
-      });
-  }
-
-  signup(data: any) {
-    this._auth.registerUser(data).subscribe(
+    this._auth.registerUser(registerUserData).subscribe(
       (res) => {
         let token = JSON.parse(JSON.stringify(res));
         localStorage.setItem('token', token.token);

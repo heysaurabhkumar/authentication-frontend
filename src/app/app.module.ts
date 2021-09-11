@@ -69,10 +69,6 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
               '823617306530-0b264uv74c5jm32i3lmr9ipmii3hah72.apps.googleusercontent.com'
             ),
           },
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('1011827212925700'),
-          },
         ],
       } as SocialAuthServiceConfig,
     },

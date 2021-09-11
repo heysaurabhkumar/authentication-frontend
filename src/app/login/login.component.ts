@@ -1,11 +1,7 @@
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  FacebookLoginProvider,
-  GoogleLoginProvider,
-  SocialAuthService,
-} from 'angularx-social-login';
+import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +9,6 @@ import {
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  socialData = {
-    email: '',
-    username: '',
-    password: '',
-  };
   constructor(
     private _auth: AuthService,
     private _router: Router,
@@ -31,37 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(loginUserData: any) {
-    this.login(loginUserData);
-  }
-
-  loginWithGoogle() {
-    this._socialAuthService
-      .signIn(GoogleLoginProvider.PROVIDER_ID)
-      .then((data) => {
-        this.socialData.email = data.email;
-        this.socialData.username = data.name;
-        this.socialData.password = data.id;
-      })
-      .then(() => {
-        this.login(this.socialData);
-      });
-  }
-
-  loginWithFacebook() {
-    this._socialAuthService
-      .signIn(FacebookLoginProvider.PROVIDER_ID)
-      .then((data) => {
-        this.socialData.email = data.email;
-        this.socialData.username = data.name;
-        this.socialData.password = data.id;
-      })
-      .then(() => {
-        this.login(this.socialData);
-      });
-  }
-
-  login(data: any) {
-    this._auth.loginUser(data).subscribe(
+    this._auth.loginUser(loginUserData).subscribe(
       (res) => {
         let token = JSON.parse(JSON.stringify(res));
         localStorage.setItem('token', token.token);
@@ -77,5 +38,27 @@ export class LoginComponent implements OnInit {
         }
       }
     );
+  }
+
+  continueWithGoogle() {
+    this._socialAuthService
+      .signIn(GoogleLoginProvider.PROVIDER_ID)
+      .then((data) => {
+        this._auth.continueWithGoogle({ token: data.idToken }).subscribe(
+          (res) => {
+            let token = JSON.parse(JSON.stringify(res));
+            localStorage.setItem('token', token.token);
+            if (token.firstTime) {
+              alert('Set yout password first');
+              this._router.navigate(['/edit']);
+              return;
+            }
+            this._router.navigate(['/profile']);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+      });
   }
 }

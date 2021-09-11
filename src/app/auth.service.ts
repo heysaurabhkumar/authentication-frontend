@@ -15,6 +15,7 @@ export class AuthService {
   private _editUrl = 'http://localhost:3000/api/edit';
   private _forgotPassword = 'http://localhost:3000/api/forgot-password';
   private _resetPassword = 'http://localhost:3000/api/reset-password';
+  private _googleUrl = 'http://localhost:3000/api/google';
 
   //For production
 
@@ -24,6 +25,7 @@ export class AuthService {
   // private _editUrl = 'api/edit';
   // private _forgotPassword = 'api/forgot-password';
   // private _resetPassword = 'api/reset-password';
+  // private _googleUrl = 'api/google';
 
   constructor(
     private http: HttpClient,
@@ -37,6 +39,10 @@ export class AuthService {
 
   editUser(user: any) {
     return this.http.post(this._editUrl, user);
+  }
+
+  continueWithGoogle(token: any) {
+    return this.http.post(this._googleUrl, token);
   }
 
   loginUser(user: any) {

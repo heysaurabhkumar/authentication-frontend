@@ -16,23 +16,16 @@ export class EditProfileComponent implements OnInit {
       Validators.required,
       Validators.minLength(4),
     ]),
-    // password: new FormControl('', [
-    //   Validators.required,
-    //   Validators.minLength(6),
-    // ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
   });
   constructor(private _auth: AuthService, private _router: Router) {}
 
   ngOnInit(): void {
     this._auth.getProfile().subscribe(
       (res) => {
-        this.display = JSON.parse(JSON.stringify(res)).isSocial;
-        if (!this.display) {
-          this.user.addControl(
-            'password',
-            new FormControl('', [Validators.required, Validators.minLength(6)])
-          );
-        }
         this.user.patchValue({
           email: JSON.parse(JSON.stringify(res)).email,
           username: JSON.parse(JSON.stringify(res)).username,

@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +16,7 @@ export class ResumeService {
   // private _templateUrl = 'api/template';
 
   resumeData: any;
-  constructor(private http: HttpClient, private _router: Router) {}
+  constructor(private http: HttpClient) {}
 
   setResumeData(data: any) {
     // this.resumeData = data;

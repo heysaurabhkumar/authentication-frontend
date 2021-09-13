@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { ResumeService } from './../resume.service';
+import { ResumeService } from '../../../services/resume/resume.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormArray } from '@angular/forms';
 

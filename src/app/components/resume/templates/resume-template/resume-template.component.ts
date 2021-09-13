@@ -1,4 +1,4 @@
-import { ResumeService } from './../resume.service';
+import { ResumeService } from '../../../../services/resume/resume.service';
 import { Component, OnInit } from '@angular/core';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';

@@ -1,17 +1,17 @@
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { ViewAllTemplatesComponent } from './view-all-templates/view-all-templates.component';
-import { ResumeTemplateComponent } from './resume-template/resume-template.component';
-import { ResumeFormComponent } from './resume-form/resume-form.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { HomeComponent } from './home/home.component';
+import { ResetPasswordComponent } from './components/auth/reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
+import { ViewAllTemplatesComponent } from './components/resume/view-all-templates/view-all-templates.component';
+import { ResumeTemplateComponent } from './components/resume/templates/resume-template/resume-template.component';
+import { ResumeFormComponent } from './components/resume/resume-form/resume-form.component';
+import { EditProfileComponent } from './components/user/edit-profile/edit-profile.component';
+import { RegisterComponent } from './components/auth/register/register.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
+import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './auth.guard';
-import { ResumeTemplateOneComponent } from './resume-template-one/resume-template-one.component';
+import { AuthGuard } from './services/auth/auth.guard';
+import { ResumeTemplateOneComponent } from './components/resume/templates/resume-template-one/resume-template-one.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

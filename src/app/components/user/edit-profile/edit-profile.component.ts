@@ -25,10 +25,10 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this._auth.getProfile().subscribe(
-      (res) => {
+      (res: any) => {
         this.user.patchValue({
-          email: JSON.parse(JSON.stringify(res)).email,
-          username: JSON.parse(JSON.stringify(res)).username,
+          email: res.email,
+          username: res.username,
         });
       },
       (err) => console.error(err)

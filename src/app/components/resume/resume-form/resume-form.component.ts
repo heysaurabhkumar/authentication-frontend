@@ -32,44 +32,44 @@ export class ResumeFormComponent implements OnInit {
 
   ngOnInit(): void {
     this._resumeService.getResumeData().subscribe(
-      (res) => {
-        const exp = JSON.parse(JSON.stringify(res)).experience;
+      (res: any) => {
+        const exp = res.experience;
         for (let i = 0; i < exp.length - 1; i++) {
           this.onAddExperience();
         }
 
-        const pro = JSON.parse(JSON.stringify(res)).project;
+        const pro = res.project;
         for (let i = 0; i < pro.length - 1; i++) {
           this.onAddProject();
         }
 
-        const cer = JSON.parse(JSON.stringify(res)).certification;
+        const cer = res.certification;
         for (let i = 0; i < cer.length - 1; i++) {
           this.onAddCertifiction();
         }
 
-        const edu = JSON.parse(JSON.stringify(res)).education;
+        const edu = res.education;
         for (let i = 0; i < edu.length - 1; i++) {
           this.onAddEducation();
         }
 
         this.resumeForm.patchValue({
-          fullname: JSON.parse(JSON.stringify(res)).fullname,
-          position: JSON.parse(JSON.stringify(res)).position,
-          email: JSON.parse(JSON.stringify(res)).email,
-          mobile: JSON.parse(JSON.stringify(res)).mobile,
-          address: JSON.parse(JSON.stringify(res)).address,
-          skills: JSON.parse(JSON.stringify(res)).skills,
-          profile: JSON.parse(JSON.stringify(res)).profile,
-          linkedin: JSON.parse(JSON.stringify(res)).linkedin,
-          facebook: JSON.parse(JSON.stringify(res)).facebook,
-          instagram: JSON.parse(JSON.stringify(res)).instagram,
-          languages: JSON.parse(JSON.stringify(res)).languages,
-          objective: JSON.parse(JSON.stringify(res)).objective,
-          experience: JSON.parse(JSON.stringify(res)).experience,
-          project: JSON.parse(JSON.stringify(res)).project,
-          certification: JSON.parse(JSON.stringify(res)).certification,
-          education: JSON.parse(JSON.stringify(res)).education,
+          fullname: res.fullname,
+          position: res.position,
+          email: res.email,
+          mobile: res.mobile,
+          address: res.address,
+          skills: res.skills,
+          profile: res.profile,
+          linkedin: res.linkedin,
+          facebook: res.facebook,
+          instagram: res.instagram,
+          languages: res.languages,
+          objective: res.objective,
+          experience: res.experience,
+          project: res.project,
+          certification: res.certification,
+          education: res.education,
         });
       },
       (err) => console.error(err)

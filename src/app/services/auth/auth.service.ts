@@ -55,7 +55,7 @@ export class AuthService {
 
   logoutUser() {
     localStorage.removeItem('token');
-    this._socialAuthService.signOut();
+    // this._socialAuthService.signOut();
     this._router.navigate(['/home']);
   }
 

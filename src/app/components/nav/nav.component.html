@@ -1,17 +1,29 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Resume Builder</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Resume Builder</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active"
+            >Home</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/profile" routerLinkActive="active"
+          <a
+            class="nav-link"
+            routerLink="users/profile"
+            routerLinkActive="active"
             >Profile</a
           >
         </li>
@@ -19,7 +31,7 @@
           <a
             class="nav-link"
             *ngIf="_authService.loggedIn()"
-            routerLink="/template"
+            routerLink="resumes/template"
             routerLinkActive="active"
             >My Resume</a
           >
@@ -28,7 +40,7 @@
           <a
             class="nav-link"
             *ngIf="_authService.loggedIn()"
-            routerLink="/resume"
+            routerLink="resumes/resume"
             routerLinkActive="active"
             >Edit Resume</a
           >
@@ -39,7 +51,7 @@
           <a
             class="nav-link"
             *ngIf="!_authService.loggedIn()"
-            routerLink="/login"
+            routerLink="auth/login"
             routerLinkActive="active"
             >Login</a
           >
@@ -48,7 +60,7 @@
           <a
             class="nav-link"
             *ngIf="!_authService.loggedIn()"
-            routerLink="/register"
+            routerLink="auth/register"
             routerLinkActive="active"
             >Register</a
           >
@@ -58,7 +70,7 @@
             class="nav-link"
             style="cursor: pointer"
             *ngIf="_authService.loggedIn()"
-            routerLink="/edit"
+            routerLink="users/edit"
             routerLinkActive="active"
             >Edit Profile</a
           >

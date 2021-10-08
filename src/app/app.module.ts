@@ -7,43 +7,19 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './components/auth/register/register.component';
-import { LoginComponent } from './components/auth/login/login.component';
+
+import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
-import { ProfileComponent } from './components/user/profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './services/auth/auth.guard';
-import { EditProfileComponent } from './components/user/edit-profile/edit-profile.component';
-import { ResumeFormComponent } from './components/resume/resume-form/resume-form.component';
-import { ResumeTemplateComponent } from './components/resume/templates/resume-template/resume-template.component';
 import {
-  FacebookLoginProvider,
   GoogleLoginProvider,
   SocialAuthServiceConfig,
   SocialLoginModule,
 } from 'angularx-social-login';
-import { ResumeTemplateOneComponent } from './components/resume/templates/resume-template-one/resume-template-one.component';
-import { ViewAllTemplatesComponent } from './components/resume/view-all-templates/view-all-templates.component';
-import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './components/auth/reset-password/reset-password.component';
-import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RegisterComponent,
-    LoginComponent,
-    HomeComponent,
-    ProfileComponent,
-    EditProfileComponent,
-    ResumeFormComponent,
-    ResumeTemplateComponent,
-    ResumeTemplateOneComponent,
-    ViewAllTemplatesComponent,
-    ForgotPasswordComponent,
-    ResetPasswordComponent,
-    NavComponent,
-  ],
+  declarations: [AppComponent, HomeComponent, NavComponent],
   imports: [
     BrowserModule,
     FormsModule,

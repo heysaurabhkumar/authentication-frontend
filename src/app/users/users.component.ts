@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
-  constructor(private _router: Router) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this._router.navigate(['users/profile']);
-  }
+  ngOnInit(): void {}
 }

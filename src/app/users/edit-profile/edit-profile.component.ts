@@ -1,3 +1,4 @@
+import { VerifyOtpService } from '../../services/auth/verify-otp.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
@@ -9,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./edit-profile.component.css'],
 })
 export class EditProfileComponent implements OnInit {
-  display: boolean = false;
+  otpSent: boolean = false;
   user = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     username: new FormControl('', [
@@ -21,7 +22,19 @@ export class EditProfileComponent implements OnInit {
       Validators.minLength(6),
     ]),
   });
-  constructor(private _auth: AuthService, private _router: Router) {}
+
+  mobileVerify = new FormGroup({
+    mobile: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'),
+    ]),
+    otp: new FormControl('', [Validators.required, Validators.minLength(5)]),
+  });
+  constructor(
+    private _auth: AuthService,
+    private _router: Router,
+    private _verifyOtp: VerifyOtpService
+  ) {}
 
   ngOnInit(): void {
     this._auth.getProfile().subscribe(
@@ -29,6 +42,9 @@ export class EditProfileComponent implements OnInit {
         this.user.patchValue({
           email: res.email,
           username: res.username,
+        });
+        this.mobileVerify.patchValue({
+          mobile: res.mobile,
         });
       },
       (err) => console.error(err)
@@ -46,6 +62,34 @@ export class EditProfileComponent implements OnInit {
         } else {
           console.error(err);
         }
+      }
+    );
+  }
+
+  sendOtp() {
+    // console.log(this.mobileVerify.value.mobile);
+
+    this._verifyOtp.sendOtp(this.mobileVerify.value.mobile).subscribe(
+      (res) => {
+        // console.log(res);
+        this.otpSent = true;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  verify() {
+    // console.log(this.mobileVerify.value.otp);
+    this._verifyOtp.verifyOtp(this.mobileVerify.value).subscribe(
+      (res) => {
+        // console.log(res);
+        this._router.navigate(['/users/profile']);
+        this._verifyOtp.verified = true;
+      },
+      (err) => {
+        console.log(err);
       }
     );
   }

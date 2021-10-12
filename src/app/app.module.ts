@@ -1,3 +1,4 @@
+import { VerifyOtpService } from './services/auth/verify-otp.service';
 import { ResumeService } from './services/resume/resume.service';
 import { TokenInterceptorService } from './services/auth/token-interceptor.service';
 import { AuthService } from './services/auth/auth.service';
@@ -17,6 +18,7 @@ import {
   SocialAuthServiceConfig,
   SocialLoginModule,
 } from 'angularx-social-login';
+import { VerifyGuard } from './services/auth/verify.guard';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NavComponent],
@@ -31,6 +33,7 @@ import {
   providers: [
     AuthService,
     AuthGuard,
+    VerifyGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
@@ -51,6 +54,7 @@ import {
       } as SocialAuthServiceConfig,
     },
     ResumeService,
+    VerifyOtpService,
   ],
   bootstrap: [AppComponent],
 })

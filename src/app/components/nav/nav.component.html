@@ -22,7 +22,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="users/profile"
+            routerLink="/users/profile"
             routerLinkActive="active"
             >Profile</a
           >
@@ -31,7 +31,7 @@
           <a
             class="nav-link"
             *ngIf="_authService.loggedIn()"
-            routerLink="resumes/template"
+            routerLink="/resumes/template"
             routerLinkActive="active"
             >My Resume</a
           >
@@ -40,7 +40,7 @@
           <a
             class="nav-link"
             *ngIf="_authService.loggedIn()"
-            routerLink="resumes/resume"
+            routerLink="/resumes/resume"
             routerLinkActive="active"
             >Edit Resume</a
           >
@@ -51,7 +51,7 @@
           <a
             class="nav-link"
             *ngIf="!_authService.loggedIn()"
-            routerLink="auth/login"
+            routerLink="/auth/login"
             routerLinkActive="active"
             >Login</a
           >
@@ -60,7 +60,7 @@
           <a
             class="nav-link"
             *ngIf="!_authService.loggedIn()"
-            routerLink="auth/register"
+            routerLink="/auth/register"
             routerLinkActive="active"
             >Register</a
           >
@@ -70,7 +70,7 @@
             class="nav-link"
             style="cursor: pointer"
             *ngIf="_authService.loggedIn()"
-            routerLink="users/edit"
+            routerLink="/users/edit"
             routerLinkActive="active"
             >Edit Profile</a
           >

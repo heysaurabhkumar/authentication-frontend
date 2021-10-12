@@ -8,6 +8,7 @@ import { ResumeFormComponent } from './resume-form/resume-form.component';
 import { ResumeTemplateOneComponent } from './templates/resume-template-one/resume-template-one.component';
 
 import { AuthGuard } from './../services/auth/auth.guard';
+import { VerifyGuard } from '../services/auth/verify.guard';
 
 const routes: Routes = [
   {
@@ -17,22 +18,22 @@ const routes: Routes = [
       {
         path: 'resume',
         component: ResumeFormComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard, VerifyGuard],
       },
       {
         path: 'template',
         component: ViewAllTemplatesComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard, VerifyGuard],
       },
       {
         path: 'template-one',
         component: ResumeTemplateComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard, VerifyGuard],
       },
       {
         path: 'template-two',
         component: ResumeTemplateOneComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard, VerifyGuard],
       },
     ],
   },

@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     if (this._auth.loggedIn()) {
       this._auth.logoutUser();
-      this._router.navigate(['auth/register']);
+      this._router.navigate(['/auth/register']);
     }
   }
 
@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
       (res) => {
         let token = JSON.parse(JSON.stringify(res));
         localStorage.setItem('token', token.token);
-        this._router.navigate(['users/profile']);
+        this._router.navigate(['/users/profile']);
       },
       (err) => {
         if (err.error === 'Email already exists') {

@@ -5,9 +5,17 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class VerifyOtpService {
+  //For Development
+
   private _sendOtpUrl = 'http://localhost:3000/api/send-otp';
   private _verifyOtpUrl = 'http://localhost:3000/api/verify-otp';
   private _checkOtpBack = 'http://localhost:3000/api/check-otp-back';
+
+  //For Production
+
+  // private _sendOtpUrl = 'api/send-otp';
+  // private _verifyOtpUrl = 'api/verify-otp';
+  // private _checkOtpBack = 'api/check-otp-back';
 
   verified: boolean = false;
 
